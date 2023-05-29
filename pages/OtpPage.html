@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OTP || Tankaman</title>
+    <link rel="stylesheet" href="../css/fontstyle.css" />
+    <style>
+      body {
+        background-color: #414840;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .container {
+        width: 400px;
+        height: 300px;
+        padding: 20px 20px 0 20px;
+        background-color: #d9d9d9;
+        border-radius: 80px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        font-family: "Poppins", sans-serif;
+      }
+
+      .logo {
+        text-align: center;
+        margin-top: -18%;
+      }
+
+      .logo img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+      }
+
+      .form-group {
+        margin: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .otp-container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .otp-field {
+        width: 20%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .form-group button {
+        width: 50%;
+        margin-left: 90px;
+        padding: 10px;
+        background-color: #475f45;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-group button:hover {
+        background-color: #3a4f38;
+      }
+
+      h6 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo">
+        <img
+          src="../assets/245959803_180882220878709_8626775629138653314_n.jpg"
+          alt="Logo"
+        />
+      </div>
+      <form action="" method="">
+        <div class="form-group">
+          <label for="otp" style="margin-top: 50px">Kode OTP:</label>
+          <div class="otp-container">
+            <input
+              type="text"
+              id="otp1"
+              name="otp1"
+              class="otp-field"
+              maxlength="1"
+            />
+            <input
+              type="text"
+              id="otp2"
+              name="otp2"
+              class="otp-field"
+              maxlength="1"
+            />
+            <input
+              type="text"
+              id="otp3"
+              name="otp3"
+              class="otp-field"
+              maxlength="1"
+            />
+            <input
+              type="text"
+              id="otp4"
+              name="otp4"
+              class="otp-field"
+              maxlength="1"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
