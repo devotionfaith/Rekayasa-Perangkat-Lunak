@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booking Page || Tankaman</title>
+    <link rel="stylesheet" href="../css/fontstyle.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-lbxWdBUkjsdSzOv2KoyEK4yir08DnokQscZfLd9/2CDVtlisCQbAVOsmKQrxd8lGh6jpO93PN21z5PthqhQUvA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      a {
+        text-decoration: none;
+      }
+      .btn-login {
+        background-color: transparent;
+        font-family: "Buttons", sans-serif;
+        padding: 5px;
+        border: 2px solid #475f45;
+      }
+
+      h2 {
+        font-family: "LibreRegular", sans-serif;
+      }
+      .column {
+        flex: 1;
+        padding: 20px;
+      }
+
+      .form-group {
+        display: flex;
+        align-items: center;
+        margin-left: 60px;
+        margin-bottom: 20px;
+        width: 75%;
+      }
+
+      .form-group label {
+        flex: 0 0 120px;
+        margin-right: 10px;
+        color: #ffffff;
+        margin-right: 10px;
+      }
+
+      .form-group input,
+      .form-group select {
+        flex: 1;
+      }
+
+      .form-group input[type="tel"],
+      .form-group input[type="text"],
+      .form-group input[type="date"],
+      .form-group select {
+        padding: 5px;
+        padding-right: 1px;
+        border: 1px solid #254c27;
+        border-radius: 10px;
+        background-color: #e3e0e0;
+      }
+
+      form-group input[type="tel"]:focus,
+      form-group input[type="text"]:focus,
+      form-group input[type="date"]:focus,
+      form-group select:focus {
+        outline: none;
+        border-bottom: 2px solid #4caf50;
+      }
+
+      .form-group button {
+        width: 50%;
+        margin-left: 120px;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #475f45;
+        font-family: "Buttons", sans;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .form-group button:hover {
+        background-color: #3a4f38;
+      }
+
+      .cost {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-left: 60px;
+        color: #ffffff;
+      }
+
+      .cost label {
+        flex: 0 0 120px;
+        margin-right: 10px;
+      }
+
+      .image-column-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+      }
+
+      .image-column-container img {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <img src="../assets/NavbarLogo.jpg" alt="Logo" />
+      </div>
+      <ul class="navbar-menu">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">BOOKING</a></li>
+        <li><a href="#">CONTACT FORM</a></li>
+        <li><a href="#">ARTIKEL</a></li>
+        <button class="btn-login"><a href="LoginPage.html">LOGIN</a></button>
+      </ul>
+    </nav>
+    <section class="section1">
+      <a href="HistoryPage.html"
+        ><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
+          RIWAYAT
+        </button></a
+      >
+      <div class="bookingsection">
+        <h2 style="color: white; letter-spacing: 2px">Our Services</h2>
+        <div class="image-container">
+          <div class="image-wrapper">
+            <a href="link1.html" class="img-hover">
+              <img
+                src="../assets/camp.jpg"
+                alt="Gambar 1"
+                style="border: 3px solid #ffffff"
+              />
+              <p class="image-label">
+                Camp Area <br />
+                25.000/day
+              </p>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="link2.html" class="img-hover">
+              <img src="../assets/trek.jpg" alt="Gambar 2" />
+              <p class="image-label">
+                Trekking <br />
+                160.000/4 pax
+              </p>
+            </a>
+          </div>
+          <div class="image-wrapper">
+            <a href="link3.html" class="img-hover">
+              <img src="../assets/pendapa.jpg" alt="Gambar 3" />
+              <p class="image-label">
+                Pendopo <br />
+                450.000/2 jam
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h3 class="header">Booking Camp Area</h3>
+    <section class="section2">
+      <div class="column">
+        <form id="campForm">
+          <div class="form-group">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">No. Telepon:</label>
+            <input type="tel" id="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="startDate">Tanggal Mulai:</label>
+            <input type="date" id="startDate" required />
+          </div>
+
+          <div class="form-group">
+            <label for="endDate">Tanggal Selesai:</label>
+            <input type="date" id="endDate" required />
+          </div>
+
+          <div class="form-group">
+            <label for="campArea">Camp Area:</label>
+            <select id="campArea">
+              <option value="area1">Area 1</option>
+              <option value="area2">Area 2</option>
+              <option value="area3">Area 3</option>
+            </select>
+          </div>
+
+          <div class="cost">
+            <label for="cost">Biaya:</label>
+            <span id="cost">Disini Biaya</span>
+          </div>
+
+          <div class="form-group">
+            <button type="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+      <div class="column">
+        <div class="image-column-container">
+          <img src="../assets/camp.jpg" alt="Foto" />
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-column">
+        <h3></h3>
+        <div class="company-info">
+          <img
+            src="../assets/245959803_180882220878709_8626775629138653314_n.jpg"
+            alt="Logo Perusahaan"
+            style="border-radius: 50%"
+          />
+          <p>
+            Nikmati ....<br />
+            Keelokan bentang alam Gunung Merapi dan sejuknya udara dataran
+            tinggi di sini.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-column" style="padding-left: 120px">
+        <h3 style="font-size: 16px">Sitemap</h3>
+        <ul class="sitemap">
+          <li><a href="HomePage.php">Home</a></li>
+          <li><a href="BookingPage.php">Booking</a></li>
+          <li><a href="ContactFormPage.php">Contact Form</a></li>
+          <li><a href="ArtikelPage.php">Artikel</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column" style="padding-left: 80px">
+        <h3 style="font-size: 16px">Ikuti Kami</h3>
+        <ul class="social-media">
+          <li>
+            <a href="#" style="color: #eed9d9; font-size: 14px"
+              ><i
+                class="fa-brands fa-instagram"
+                style="color: #eff0f2; margin-right: 10px"
+              ></i>
+              Instagram</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    <div class="footer-bottom">
+      <div class="container-footer-bottom">
+        <p style="font-size: 12px">
+          &copy; 2023 Gustian Safitri. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/a20a32b1ba.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

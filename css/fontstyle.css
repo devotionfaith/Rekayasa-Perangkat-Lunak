@@ -13,3 +13,8 @@
     src: url('../fonts/Roboto-Bold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Footer'; 
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+}
+
