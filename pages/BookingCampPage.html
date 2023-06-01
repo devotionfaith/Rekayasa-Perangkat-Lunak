@@ -74,7 +74,7 @@
         border-bottom: 2px solid #4caf50;
       }
 
-      .form-group button {
+      .form-group input[type="submit"] {
         width: 50%;
         margin-left: 120px;
         margin-top: 20px;
@@ -87,7 +87,7 @@
         cursor: pointer;
       }
 
-      .form-group button:hover {
+      .form-group input[type="submit"]:hover {
         background-color: #3a4f38;
       }
 
@@ -119,18 +119,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="navbar-logo">
-        <img src="../assets/NavbarLogo.jpg" alt="Logo" />
-      </div>
-      <ul class="navbar-menu">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">BOOKING</a></li>
-        <li><a href="#">CONTACT FORM</a></li>
-        <li><a href="#">ARTIKEL</a></li>
-        <button class="btn-login"><a href="LoginPage.html">LOGIN</a></button>
-      </ul>
-    </nav>
+    <div id="navbar-placeholder"></div>
     <section class="section1">
       <a href="HistoryPage.html"
         ><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
@@ -214,7 +203,7 @@
           </div>
 
           <div class="form-group">
-            <button type="submit">SUBMIT</button>
+            <input type="submit" value="Submit" />
           </div>
         </form>
       </div>
@@ -224,60 +213,21 @@
         </div>
       </div>
     </section>
-
-    <footer>
-      <div class="footer-column">
-        <h3></h3>
-        <div class="company-info">
-          <img
-            src="../assets/245959803_180882220878709_8626775629138653314_n.jpg"
-            alt="Logo Perusahaan"
-            style="border-radius: 50%"
-          />
-          <p>
-            Nikmati ....<br />
-            Keelokan bentang alam Gunung Merapi dan sejuknya udara dataran
-            tinggi di sini.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-column" style="padding-left: 120px">
-        <h3 style="font-size: 16px">Sitemap</h3>
-        <ul class="sitemap">
-          <li><a href="HomePage.php">Home</a></li>
-          <li><a href="BookingPage.php">Booking</a></li>
-          <li><a href="ContactFormPage.php">Contact Form</a></li>
-          <li><a href="ArtikelPage.php">Artikel</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-column" style="padding-left: 80px">
-        <h3 style="font-size: 16px">Ikuti Kami</h3>
-        <ul class="social-media">
-          <li>
-            <a href="#" style="color: #eed9d9; font-size: 14px"
-              ><i
-                class="fa-brands fa-instagram"
-                style="color: #eff0f2; margin-right: 10px"
-              ></i>
-              Instagram</a
-            >
-          </li>
-        </ul>
-      </div>
-    </footer>
-
-    <div class="footer-bottom">
-      <div class="container-footer-bottom">
-        <p style="font-size: 12px">
-          &copy; 2023 Gustian Safitri. All rights reserved.
-        </p>
-      </div>
-    </div>
+    <div id="footer-placeholder"></div>
   </body>
   <script
     src="https://kit.fontawesome.com/a20a32b1ba.js"
     crossorigin="anonymous"
   ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      $("#navbar-placeholder").load("component/Navbar.html");
+    });
+  </script>
+  <script>
+    $(function () {
+      $("#footer-placeholder").load("component/Footer.html");
+    });
+  </script>
 </html>

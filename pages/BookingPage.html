@@ -26,25 +26,14 @@
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="navbar-logo">
-        <img src="../assets/NavbarLogo.jpg" alt="Logo" />
-      </div>
-      <ul class="navbar-menu">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">BOOKING</a></li>
-        <li><a href="#">CONTACT FORM</a></li>
-        <li><a href="#">ARTIKEL</a></li>
-        <button class="btn-login"><a href="LoginPage.html">LOGIN</a></button>
-      </ul>
-    </nav>
+    <div id="navbar-placeholder"></div>
     <section class="section1">
       <a href="HistoryPage.html"
         ><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
           RIWAYAT
         </button></a
       >
-      <div class="bookingsection">
+      <div class="bookingsection" style="margin-bottom: 55px">
         <h2 style="color: white; letter-spacing: 2px">Our Services</h2>
         <div class="image-container">
           <div class="image-wrapper">
@@ -76,6 +65,22 @@
           </div>
         </div>
       </div>
+      <div id="footer-placeholder"></div>
     </section>
   </body>
+  <script
+    src="https://kit.fontawesome.com/a20a32b1ba.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      $("#navbar-placeholder").load("component/Navbar.html");
+    });
+  </script>
+  <script>
+    $(function () {
+      $("#footer-placeholder").load("component/Footer.html");
+    });
+  </script>
 </html>

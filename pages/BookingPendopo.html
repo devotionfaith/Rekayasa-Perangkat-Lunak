@@ -35,7 +35,7 @@
         padding: 20px;
       }
 
-      .form-group {
+      .form-group{
         display: flex;
         align-items: center;
         margin-left: 60px;
@@ -43,11 +43,10 @@
         width: 75%;
       }
 
-      .form-group label {
+      .form-group label{
         flex: 0 0 120px;
         margin-right: 10px;
         color: #ffffff;
-        margin-right: 10px;
       }
 
       .form-group input,
@@ -58,6 +57,7 @@
       .form-group input[type="tel"],
       .form-group input[type="text"],
       .form-group input[type="date"],
+      .form-group input[type="time"],
       .form-group input[type="number"] {
         padding: 5px;
         padding-right: 1px;
@@ -66,15 +66,17 @@
         background-color: #e3e0e0;
       }
 
+      
+
       form-group input[type="tel"]:focus,
       form-group input[type="text"]:focus,
       form-group input[type="date"]:focus,
-      form-group select:focus {
+      form-group input[type="time"]:focus {
         outline: none;
         border-bottom: 2px solid #4caf50;
       }
 
-      .form-group input[type="submit"] {
+      .form-group input[type="submit"]{
         width: 50%;
         margin-left: 120px;
         margin-top: 20px;
@@ -89,6 +91,10 @@
 
       .form-group input[type="submit"]:hover {
         background-color: #3a4f38;
+      }
+      .textfield-side {
+        display: flex;
+        flex-direction: row;
       }
 
       .cost {
@@ -140,11 +146,7 @@
           </div>
           <div class="image-wrapper">
             <a href="link2.html" class="img-hover">
-              <img
-                src="../assets/trek.jpg"
-                alt="Gambar 2"
-                style="border: 3px solid #ffffff"
-              />
+              <img src="../assets/trek.jpg" alt="Gambar 2" />
               <p class="image-label">
                 Trekking <br />
                 160.000/4 pax
@@ -153,7 +155,11 @@
           </div>
           <div class="image-wrapper">
             <a href="link3.html" class="img-hover">
-              <img src="../assets/pendapa.jpg" alt="Gambar 3" />
+              <img
+                src="../assets/pendapa.jpg"
+                alt="Gambar 3"
+                style="border: 3px solid #ffffff"
+              />
               <p class="image-label">
                 Pendopo <br />
                 450.000/2 jam
@@ -182,10 +188,16 @@
             <label for="date">Tanggal:</label>
             <input type="date" id="date" required />
           </div>
-          <div class="form-group">
-            <label for="jumlahOrang">Jumah Orang :</label>
-            <input type="number" id="jumlahOrang" required />
-          </div>
+
+            <div class="form-group">
+              <label for="jamMasuk">Jam Mulai :</label>
+              <input type="time" id="jamMasuk"  required />
+            </div>
+            <div class="form-group"">
+              <label for="jamKeluar">Jam Selesai :</label>
+              <input type="time" id="jamKeluar" required  />
+            </div>
+          
 
           <div class="cost">
             <label for="cost">Biaya:</label>
@@ -193,13 +205,13 @@
           </div>
 
           <div class="form-group">
-            <input type="submit" value="BOOKING" />
+            <input type="submit" value="BOOKING"</input>
           </div>
         </form>
       </div>
       <div class="column">
         <div class="image-column-container">
-          <img src="../assets/trek.jpg" alt="Foto" />
+          <img src="../assets/pendapa.jpg" alt="Foto" />
         </div>
       </div>
     </section>

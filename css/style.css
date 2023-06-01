@@ -55,9 +55,10 @@
 
   /* Section 1 */
   .section1 {
-    height: calc(100vh - 64px); /* 40px adalah tinggi navbar, disesuaikan jika tinggi navbar Anda berbeda */
+    min-height: calc(100vh - 47px); /* 40px adalah tinggi navbar, disesuaikan jika tinggi navbar Anda berbeda */
     background-color: #343D33;
   }
+  
   .bookingsection{
     text-align: center;
   }
@@ -124,6 +125,15 @@
   }
 
   /* End of Section 2 */
+
+  /* Section 3 */
+
+  .section3{
+    min-height: calc(100vh - 56px);
+    margin: 0;
+    padding: 0;
+  }
+
 
   /* Buttons */
   .btn1{
