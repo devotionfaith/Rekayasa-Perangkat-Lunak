@@ -14,7 +14,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
     <style>
       body {
         margin: 0;
@@ -26,6 +25,14 @@
         height: 1px;
         width: 300px;
         background-color: #ccc;
+        margin-bottom: 20px;
+      }
+
+      .qna-section hr {
+        border: none;
+        height: 1px;
+        width: 90%;
+        background-color: #475f45;
         margin-bottom: 20px;
       }
       .contact-section {
@@ -92,35 +99,11 @@
         border-radius: 3px;
         cursor: pointer;
       }
-
-      .question-list {
-        margin-top: 30px;
-      }
-
-      .question-list h2 {
-        margin-bottom: 10px;
-      }
-
-      .question {
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 5px;
-      }
-
-      .question p {
-        margin-bottom: 5px;
-      }
-
-      .answer {
-        background-color: #f7f7f7;
-        padding: 10px;
-        border-radius: 5px;
-      }
-
-      .answer p {
-        margin-bottom: 5px;
+      .data-group{
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        position: relative;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -151,21 +134,68 @@
         </form>
       </div>
     </section>
+    <section class="qna-section">
+      <h1>Contact Response</h1>
+      <hr />
+      <div class="question-list">
+        <div class="question">
+          <div class="data-group">  
+            <p>Username</p>
+            <p style="justify-self: end;">Tanggal</p>   
+          </div>
+          <div class="question-heading">
+          <p>Pertanyaan: Apa kebijakan pengembalian barang?</p>
+          <div class="icon"><i class="fa-solid fa-caret-down"></i></div>
+          </div>
+          <div class="answer">
+            <p>Jawaban: Kebijakan pengembalian barang kami adalah...</p>
+          </div>
+        </div>
+  
+        <div class="question">
+          <div class="data-group">  
+            <p>Username</p>
+            <p style="justify-self: end;">Tanggal</p>
+          </div>
+          <div class="question-heading">
+          <p>Pertanyaan: Bagaimana cara menghubungi layanan pelanggan?</p>
+          <div class="icon"><i class="fa-solid fa-caret-down"></i></div>
+          </div>
+          <div class="answer">
+            <p>Jawaban: Anda dapat menghubungi layanan pelanggan kami di nomor telepon berikut...</p>
+          </div>
+        </div>
+    </section>
+      
     <div id="footer-placeholder"></div>
   </body>
   <script
-    src="https://kit.fontawesome.com/a20a32b1ba.js"
-    crossorigin="anonymous"
+  src="https://kit.fontawesome.com/a20a32b1ba.js"
+  crossorigin="anonymous"
   ></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(function () {
-      $("#navbar-placeholder").load("component/Navbar.html");
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    const questions = document.querySelectorAll(".question");
+    questions.forEach(function(question) {
+      const questionHeading = question.querySelector(".question-heading");
+      const answer = question.querySelector(".answer");
+      questionHeading.addEventListener("click", function() {
+        question.classList.toggle("active");
+        if (question.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+          answer.style.maxHeight = 0;
+        }
+      });
     });
-  </script>
+  });</script>
   <script>
     $(function () {
       $("#footer-placeholder").load("component/Footer.html");
     });
   </script>
+  <script>
+  $(function () {
+    $("#navbar-placeholder").load("component/Navbar.html");
+  });</script>
 </html>
