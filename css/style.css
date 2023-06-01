@@ -50,6 +50,12 @@
   .navbar-menu a:hover {
     color: #648660;
   }
+  .btn-login {
+    background-color: transparent;
+    font-family: "Buttons", sans-serif;
+    padding: 5px;
+    border: 2px solid #475f45;
+  }
 
   /* Navbar End */
 
@@ -298,3 +304,12 @@
     text-align: center;
   }
   /* End of Footer */
+
+  /* HomePage */
+
+  .homepage-1{
+    min-height: calc(100vh - 56px);
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
