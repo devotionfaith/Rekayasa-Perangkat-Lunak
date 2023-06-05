@@ -1,4 +1,9 @@
-
+body{
+  transition: opacity 0.3s ease;
+}
+body.fade-out{
+  opacity: 0;
+}
 /* Navbar */
 .navbar {
     background-color: #ffffff;
