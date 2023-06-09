@@ -1,3 +1,29 @@
+<?php
+if (isset($_SESSION['user'])) {
+    header('Location: dashboard.php');
+    exit();
+}
+
+if (isset($_GET['login_required'])) {
+    $message =  "<p>Anda harus login terlebih dahulu untuk mengakses halaman ini.</p>";
+} else {
+    $message = "";
+}
+if (isset($_GET['message'])) {
+    if ($_GET['message'] == "failed") {
+        $alert = "Username atau password salah.";
+    } elseif ($_GET['message'] == "logout") {
+        $alert = "Anda telah berhasil logout.";
+    } elseif ($_GET['message'] == "belum_login") {
+        $alert = "Anda harus login terlebih dahulu untuk mengakses halaman.";
+    } elseif ($_GET['message'] == "Success") {
+        $alert = "Silahkan Login";
+    }
+} else {
+    $alert = " ";
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -85,7 +111,13 @@
         <div class="logo">
             <img src="../assets/245959803_180882220878709_8626775629138653314_n.jpg" alt="Logo" />
         </div>
-        <form action="#" method="post">
+        <div style="text-align: center;">
+            <?php
+            echo $message;
+            ?>
+            <p><?= $alert ?></p>
+        </div>
+        <form action="php/login.php" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="Masukkan username" />
@@ -97,7 +129,7 @@
             <div class="form-group">
                 <button type="submit">Login</button>
             </div>
-            <h6>Belum punya akun? <a href="RegisterPage.html">Daftar</a></h6>
+            <h6>Belum punya akun? <a href="RegisterPage.php">Daftar</a></h6>
         </form>
     </div>
 </body>

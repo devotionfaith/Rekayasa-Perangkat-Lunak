@@ -61,6 +61,14 @@ body.fade-out{
     padding: 5px;
     border: 2px solid #475f45;
   }
+  .btn-logout{
+    font-family: "Buttons", sans-serif;
+    padding: 5px;
+    border: 2px solid #ff0000;
+  }
+  .btn-logout a{
+    color: #ff0000;
+  }
 
   /* Navbar End */
 
