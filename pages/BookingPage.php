@@ -31,7 +31,6 @@
 
 <body>
   <div id="navbar-placeholder"></div>
-
   <section class="section1">
     <a href="HistoryPage.html"><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
         RIWAYAT
@@ -75,7 +74,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(function() {
-    $("#navbar-placeholder").load("component/Navbar.html");
+    $("#navbar-placeholder").load("component/Navbar.php");
   });
 </script>
 <script>

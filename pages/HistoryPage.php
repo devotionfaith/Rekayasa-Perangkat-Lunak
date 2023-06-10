@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: LoginPage.php?login_required=1');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-lbxWdBUkjsdSzOv2KoyEK4yir08DnokQscZfLd9/2CDVtlisCQbAVOsmKQrxd8lGh6jpO93PN21z5PthqhQUvA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <style>
     body {
         margin: 0;
@@ -65,6 +71,7 @@
     .ticket-container .ticket-image {
         width: 60%;
         height: auto;
+        align-items: center;
         margin-left: 30px;
         border-radius: 5px;
     }
@@ -103,107 +110,162 @@
         margin-left: 20px;
         border-bottom: 1px solid #eed9d9;
     }
+
+    .divider {
+        align-self: center;
+        border-bottom: 1px solid #eed9d9;
+    }
     </style>
 </head>
 
 <body>
     <div id="navbar-placeholder"></div>
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <!-- <div class="container section3">
+    <div class="container section3">
         <h2 class="subheader">Riwayat Pemesanan</h2>
-        <div class="filter-container">
-            <label for="filter"><i class="fas fa-filter"></i> Filter</label>
-            <select id="filter">
-                <option value="all">Semua</option>
-                <option value="completed">Selesai</option>
-                <option value="pending">Belum Bayar</option>
-                <option value="expired">Expired</option>
-            </select>
-        </div>
+        <h3 class="divider"> Pemesanan Camp</h3>
+
+        <?php
+        include "php/connector.php";
+        $user = $_SESSION['user'];
+        $sql = "SELECT booking_camp.id,booking_camp.id_user,booking_camp.name,booking_camp.start_date,booking_camp.end_date,booking_camp.cost,booking_camp.status, camp_area.name as camp_area FROM `booking_camp` INNER JOIN camp_area ON camp_area.id = booking_camp.id_camp where id_user = $user";
+        $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+
         <div class="ticket-container" style="margin-top: 20px">
-            <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" />
+            <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
             <div class="ticket-info">
                 <div class="field">
                     <label>Id Pesan:</label>
-                    <span>John Doe</span>
+                    <span><?= $data['id'] ?></span>
+                </div>
+                <div class="field">
+                    <label>Camp Area:</label>
+                    <span><?= $data['camp_area'] ?></span>
                 </div>
                 <div class="field">
                     <label>Tanggal Masuk:</label>
-                    <span>01 Juni 2023</span>
+                    <span><?= $data['start_date'] ?></span>
                 </div>
                 <div class="field">
                     <label>Tanggal Keluar:</label>
-                    <span>01 Juni 2023</span>
+                    <span><?= $data['end_date'] ?></span>
                 </div>
                 <div class="field">
                     <label>Harga:</label>
-                    <span>$50</span>
+                    <span><?= $data['cost'] ?></span>
                 </div>
             </div>
-            <button class="payment-button btn1">Bayar</button>
+            <?php
+                if ($data['status'] == "Paid") {
+                ?>
+            <button class="payment-button btn1">Selesai</button>
+            <?php
+                } else {
+                ?>
+            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
+            <?php
+                }
+                ?>
         </div>
+        <?php
+        }
+        ?>
+        <h3 class="divider"> Pemesanan Trek</h3>
+        <?php
+        include "php/connector.php";
+        $user = $_SESSION['user'];
+        $sql = "SELECT * FROM `booking_trek` where id_user = $user";
+        $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
 
         <div class="ticket-container">
-            <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" />
+            <img src="../assets/trek.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 5px;" />
             <div class="ticket-info">
-                <div class="field">
-                    <label>Id Pesan:</label>
-                    <span>John Doe</span>
-                </div>
-                <div class="field">
-                    <label>Tanggal Masuk:</label>
-                    <span>01 Juni 2023</span>
-                </div>
-                <div class="field">
-                    <label>Tanggal Keluar:</label>
-                    <span>01 Juni 2023</span>
-                </div>
-                <div class="field">
-                    <label>Harga:</label>
-                    <span>$50</span>
-                </div>
-            </div>
-            <button class="payment-button btn1">Bayar</button>
-        </div>
 
-        <div class="ticket-container">
-            <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" />
-            <div class="ticket-info">
                 <div class="field">
                     <label>Id Pesan:</label>
-                    <span>John Doe</span>
+                    <span><?= $data['id'] ?></span>
                 </div>
                 <div class="field">
-                    <label>Tanggal Masuk:</label>
-                    <span>01 Juni 2023</span>
+                    <label>Tanggal:</label>
+                    <span><?= $data['date'] ?></span>
                 </div>
                 <div class="field">
-                    <label>Tanggal Keluar:</label>
-                    <span>01 Juni 2023</span>
+                    <label>Jumlah Orang:</label>
+                    <span><?= $data['people'] ?></span>
                 </div>
                 <div class="field">
                     <label>Harga:</label>
-                    <span>$50</span>
+                    <span><?= $data['cost'] ?></span>
                 </div>
             </div>
-            <button class="payment-button btn1">Bayar</button>
+            <?php
+                if ($data['status'] == "Paid") {
+                ?>
+            <button class="payment-button btn1">Selesai</button>
+            <?php
+                } else {
+                ?>
+            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
+            <?php
+                }
+                ?>
         </div>
+        <?php
+        }
+        ?>
+        <h3 class="divider"> Pemesanan Pendapa</h3>
+        <?php
+        include "php/connector.php";
+        $user = $_SESSION['user'];
+        $sql = "SELECT * FROM `booking_pendopo` where id_user = $user";
+        $query = mysqli_query($connect, $sql) or die(mysqli_error($connect));
+
+        while ($data = mysqli_fetch_array($query)) {
+        ?>
+        <div class="ticket-container">
+            <img src="../assets/pendapa.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
+            <div class="ticket-info">
+                <div class="field">
+                    <label>Id Pesan:</label>
+                    <span><?= $data['id'] ?></span>
+                </div>
+                <div class="field">
+                    <label>Tanggal:</label>
+                    <span><?= $data['tanggal'] ?></span>
+                </div>
+                <div class="field">
+                    <label>Jam :</label>
+                    <?php
+                        $startTime = date('H:i', strtotime($data['start_time']));
+                        $endTime = date('H:i', strtotime($data['end_time']));
+                        ?>
+                    <span><?= $startTime ?> - <?= $endTime ?></span>
+                </div>
+                <div class="field">
+                    <label>Harga:</label>
+                    <span><?= $data['cost'] ?></span>
+                </div>
+            </div>
+            <?php
+                if ($data['status'] == "Paid") {
+                ?>
+            <button class="payment-button btn1">Selesai</button>
+            <?php
+                } else {
+                ?>
+            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
+            <?php
+                }
+                ?>
+        </div>
+        <?php
+        }
+        ?>
     </div>
 
     <div id="footer-placeholder"></div>
