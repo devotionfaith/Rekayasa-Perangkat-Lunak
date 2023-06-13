@@ -365,6 +365,7 @@ body.fade-out{
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
   }
 
   .dialog {
@@ -373,6 +374,8 @@ body.fade-out{
     padding: 50px 100px;
     border-radius: 10px;
     text-align: center;
+    position: absolute;
+    z-index: 3;
   }
 
   .dialog h2 {

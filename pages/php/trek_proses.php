@@ -8,12 +8,16 @@ $phone = $_POST['phone'];
 $date = $_POST['date'];
 $people = $_POST['jumlahOrang'];
 $biaya = $_POST['hiddenCost'];
+$status = "notPaid";
+$metode = "-";
+$rekening = "-";
 
-$sql = "INSERT INTO booking_trek VALUES (NULL, '$id_user','$nama','$phone','$date','$people','$biaya',NULL )";
+$sql = "INSERT INTO booking_trek VALUES (NULL, '$id_user','$nama','$phone','$date','$people','$biaya',NULL, '$status', '$metode', '$rekening')";
 $query = mysqli_query($connect, $sql);
 
 if ($query) {
     header("location:../BookingTrekPage.php?message=success");
 } else {
-    header("location:../BookingTrekPage.php?message=gagal_booking");
+
+    // header("location:../BookingTrekPage.php?message=gagal_booking");
 }

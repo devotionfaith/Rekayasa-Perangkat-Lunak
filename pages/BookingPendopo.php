@@ -303,6 +303,7 @@ if (!isset($_SESSION['user'])) {
         var jamMasukInput = document.getElementById("jamMasuk");
         var jamKeluarInput = document.getElementById("jamKeluar");
         var costSpan = document.getElementById("cost");
+
         jamMasukInput.addEventListener("input", hitungBiaya);
         jamKeluarInput.addEventListener("input", hitungBiaya);
 

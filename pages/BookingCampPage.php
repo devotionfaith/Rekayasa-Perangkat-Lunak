@@ -209,6 +209,7 @@ if (!isset($_SESSION['user'])) {
                     <label for="cost">Biaya:</label>
                     <span name="cost" id="cost">
                     </span>
+                    <input type="hidden" id="hiddenCost" name="hiddenCost" />
                 </div>
 
                 <div class="form-group">
@@ -239,6 +240,8 @@ if (!isset($_SESSION['user'])) {
     function hitungBiayadanOpsi() {
         var startDate = document.getElementById("start_date").value;
         var endDate = document.getElementById("end_date").value;
+        const hiddenCostInput = document.getElementById("hiddenCost");
+
 
         var diff = Math.abs(new Date(endDate) - new Date(startDate));
         var days = Math.ceil(diff / (1000 * 60 * 60 * 24)) || 0;
@@ -247,6 +250,7 @@ if (!isset($_SESSION['user'])) {
         var biaya = days * hargaPerHari;
 
         document.getElementById("cost").innerHTML = biaya.toLocaleString();
+        hiddenCostInput.value = biaya;
         updateOptions(startDate, endDate);
     }
     </script>

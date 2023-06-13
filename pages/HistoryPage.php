@@ -64,6 +64,7 @@ if (!isset($_SESSION['user'])) {
             margin-top: 10px;
             width: 60%;
             position: relative;
+            z-index: 1;
         }
 
         .ticket-container .ticket-image {
@@ -113,13 +114,44 @@ if (!isset($_SESSION['user'])) {
             align-self: center;
             border-bottom: 1px solid #eed9d9;
         }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .dialog {
+            background-color: #414840;
+            color: #eed9d9;
+            padding: 50px 100px;
+            border-radius: 10px;
+            text-align: center;
+            position: absolute;
+            z-index: 3;
+        }
     </style>
 </head>
 
 <body>
     <div id="navbar-placeholder"></div>
+    <div id="overlay" class="overlay" style="display: none;">
+        <div class="dialog">
+            <h2>Message</h2>
+            <p id="errorMessage"></p>
+            <button class="btn-dialog" onclick="hideDialog()">Tutup</button>
+        </div>
+    </div>
     <div class="container section3">
         <h2 class="subheader">Riwayat Pemesanan</h2>
+
         <h3 class="divider"> Pemesanan Camp</h3>
 
         <?php
@@ -162,9 +194,10 @@ if (!isset($_SESSION['user'])) {
                 <?php
                 } else {
                 ?>
-                    <a href="Payment-method.php?value=camp&id=<?= $data['id'] ?>"><button class="payment-button btn1">Bayar</button></a> <?php
-                                                                                                                                        }
-                                                                                                                                            ?>
+                    <a href="Payment-method.php?value=camp&id=<?= $data['id'] ?>"><button class="payment-button btn1">Bayar</button></a>
+                <?php
+                }
+                ?>
             </div>
         <?php
         }
@@ -264,52 +297,6 @@ if (!isset($_SESSION['user'])) {
         <?php
         }
         ?>
-        <!-- Modal Pembayaran -->
-        <!-- Overlay -->
-        <div id="overlay" class="overlay-modal" onclick="closeModal()"></div>
-
-        <!-- Modal Pembayaran -->
-        <div id="modal-pembayaran" class="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h3>Pilih Metode Pembayaran</h3>
-            <div class="form-check">
-                <label class="form-check-label" for="metode1">
-                    <img src="../assets/dana.png" alt="Gambar Metode Pembayaran 1" class="metode-gambar">
-                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode1" value="dana" checked>
-                    Dana
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="metode2">
-                    <img src="../assets/spay.jpg" alt="Gambar Metode Pembayaran 2" class="metode-gambar">
-                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode2" value="spay">
-                    Shopee Pay
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="metode2">
-                    <img src="../assets/gopay.png" alt="Gambar Metode Pembayaran 2" class="metode-gambar">
-                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode2" value="gopay">
-                    Gopay
-                </label>
-            </div>
-            <!-- Tambahkan pilihan metode pembayaran lainnya jika diperlukan -->
-            <button class="btn btn-primary" onclick="inputnomor()">Bayar</button>
-        </div>
-
-        <div id="modal-nomor-hp" class="modal">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h4>Input Nomor HP</h4>
-            <form>
-                <div class="form-group">
-                    <label for="nomor-hp">Nomor HP:</label>
-                    <input type="text" id="nomor-hp" class="form-control">
-                </div>
-                <button type="button" class="btn btn-primary" onclick="prosesPembayaran()">Proses
-                    Pembayaran</button>
-            </form>
-        </div>
-
     </div>
 
     <div id="footer-placeholder"></div>
@@ -327,6 +314,36 @@ if (!isset($_SESSION['user'])) {
         });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    </script>
+    <script>
+        function showDialog(message) {
+            var overlay = document.getElementById("overlay");
+            var errorMessage = document.getElementById("errorMessage");
+            errorMessage.textContent = message;
+            overlay.style.display = "flex";
+        }
+
+        function hideDialog() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return "";
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var errorMessage = getParameterByName("message");
+        if (errorMessage === "success") {
+            showDialog("Pembayaran Berhasil");
+        } else if (errorMessage === "gagalbayar") {
+            showDialog("PPembayaran gagal, silahkan coba lagi");
+        }
     </script>
 </body>
 

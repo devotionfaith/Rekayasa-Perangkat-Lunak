@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jumlahduajam = $selisih->h / 2;
     $cost = $jumlahduajam * 100000;
     $status = "notPaid";
+    $metode = "-";
+    $rekening = "-";
 
     $sql = "SELECT COUNT(*) AS count FROM booking_pendopo WHERE tanggal = '$tanggalFormatted' AND start_time<= '$jamKeluar' AND end_time >= '$jamMasuk'";
     $query = mysqli_query($connect, $sql);
@@ -24,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($result['count'] > 0) {
         header("location:../BookingPendopo.php?message=gagalbooking");
     } else {
-        $insert = "INSERT INTO booking_pendopo VALUES (NULL, '$id_user','$nama','$telepon','$tanggal','$jamMasuk','$jamKeluar','$cost',NULL , '$status' )";
+        $insert = "INSERT INTO booking_pendopo VALUES (NULL, '$id_user','$nama','$telepon','$tanggal','$jamMasuk','$jamKeluar','$cost',NULL , '$status', '$metode', '$rekening' )";
         $query = mysqli_query($connect, $insert);
         if ($query) {;
             header("location:../BookingPendopo.php?message=success");
