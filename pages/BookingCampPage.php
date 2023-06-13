@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-  header('Location: LoginPage.php?login_required=1');
-  exit();
+    header('Location: LoginPage.php?login_required=1');
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -167,6 +167,13 @@ if (!isset($_SESSION['user'])) {
         </div>
     </section>
 
+    <div id="overlay" class="overlay" style="display: none;">
+        <div class="dialog">
+            <h2>Message</h2>
+            <p id="errorMessage"></p>
+            <button class="btn-dialog" onclick="hideDialog()">Tutup</button>
+        </div>
+    </div>
     <h3 class="header">Booking Camp Area</h3>
     <section class="section2">
         <div class="column">
@@ -268,6 +275,36 @@ if (!isset($_SESSION['user'])) {
             }
         };
         xhr.send();
+    }
+    </script>
+    <script>
+    function showDialog(message) {
+        var overlay = document.getElementById("overlay");
+        var errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = message;
+        overlay.style.display = "flex";
+    }
+
+    function hideDialog() {
+        var overlay = document.getElementById("overlay");
+        overlay.style.display = "none";
+    }
+
+    function getParameterByName(name) {
+        var url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    var errorMessage = getParameterByName("message");
+    if (errorMessage === "success") {
+        showDialog("Booking Berhasil");
+    } else if (errorMessage === "gagalbooking") {
+        showDialog("Pendopo sudah terpakai");
     }
     </script>
 </body>

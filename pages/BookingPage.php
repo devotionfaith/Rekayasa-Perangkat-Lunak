@@ -32,7 +32,7 @@
 <body>
   <div id="navbar-placeholder"></div>
   <section class="section1">
-    <a href="HistoryPage.html"><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
+    <a href="HistoryPage.php"><button class="btn1" style="padding: 8px 15px; margin: 20px 40px">
         RIWAYAT
       </button></a>
     <div class="bookingsection" style="margin-bottom: 55px">

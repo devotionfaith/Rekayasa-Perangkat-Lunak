@@ -16,5 +16,5 @@ $query = mysqli_query($connect, $sql);
 if ($query) {
     header("location:../BookingCampPage.php?message=success");
 } else {
-    echo "Error: " . mysqli_error($connect);
+    header("location:../BookingCampPage.php?message=gagal_booking");
 }

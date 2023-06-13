@@ -16,105 +16,103 @@ if (!isset($_SESSION['user'])) {
     <title>History || Tankaman</title>
     <link rel="stylesheet" href="../css/fontstyle.css" />
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-lbxWdBUkjsdSzOv2KoyEK4yir08DnokQscZfLd9/2CDVtlisCQbAVOsmKQrxd8lGh6jpO93PN21z5PthqhQUvA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #343d33;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #343d33;
+        }
 
-    a {
-        text-decoration: none;
-    }
+        a {
+            text-decoration: none;
+        }
 
-    .container {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        height: auto;
-        color: #eed9d9;
-    }
+        .container {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            height: auto;
+            color: #eed9d9;
+        }
 
-    .filter-container {
-        display: flex;
-        align-self: start;
-        align-items: center;
-        margin-left: 20px;
-        margin-bottom: 10px;
-        font-family: "Footer", sans-serif;
-    }
+        .filter-container {
+            display: flex;
+            align-self: start;
+            align-items: center;
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-family: "Footer", sans-serif;
+        }
 
-    .filter-container label {
-        margin-right: 5px;
-    }
+        .filter-container label {
+            margin-right: 5px;
+        }
 
-    .filter-container select {
-        padding: 5px;
-    }
+        .filter-container select {
+            padding: 5px;
+        }
 
-    .ticket-container {
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 10px;
-        background-color: #6d846a;
-        border-radius: 10px;
-        padding: 10px;
-        margin-bottom: 20px;
-        margin-top: 10px;
-        width: 60%;
-        position: relative;
-    }
+        .ticket-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 10px;
+            background-color: #6d846a;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            width: 60%;
+            position: relative;
+        }
 
-    .ticket-container .ticket-image {
-        width: 60%;
-        height: auto;
-        align-items: center;
-        margin-left: 30px;
-        border-radius: 5px;
-    }
+        .ticket-container .ticket-image {
+            width: 60%;
+            height: auto;
+            align-items: center;
+            margin-left: 30px;
+            border-radius: 5px;
+        }
 
-    .ticket-container .ticket-info {
-        display: flex;
-        flex-direction: column;
-    }
+        .ticket-container .ticket-info {
+            display: flex;
+            flex-direction: column;
+        }
 
-    .ticket-container .ticket-info .field {
-        display: flex;
-        font-size: 14px;
-        margin-top: 10px;
-    }
+        .ticket-container .ticket-info .field {
+            display: flex;
+            font-size: 14px;
+            margin-top: 10px;
+        }
 
-    .ticket-container .ticket-info .field label {
-        font-weight: bold;
-        width: 100px;
-    }
+        .ticket-container .ticket-info .field label {
+            font-weight: bold;
+            width: 100px;
+        }
 
-    .ticket-container .ticket-info .field span {
-        margin-left: 10px;
-    }
+        .ticket-container .ticket-info .field span {
+            margin-left: 10px;
+        }
 
-    .ticket-container .payment-button {
-        align-self: flex-end;
-        position: absolute;
-        bottom: 20px;
-        right: 40px;
-        width: 15%;
-        height: 30px;
-    }
+        .ticket-container .payment-button {
+            align-self: flex-end;
+            position: absolute;
+            bottom: 20px;
+            right: 40px;
+            width: 15%;
+            height: 30px;
+        }
 
-    .subheader {
-        align-self: start;
-        margin-left: 20px;
-        border-bottom: 1px solid #eed9d9;
-    }
+        .subheader {
+            align-self: start;
+            margin-left: 20px;
+            border-bottom: 1px solid #eed9d9;
+        }
 
-    .divider {
-        align-self: center;
-        border-bottom: 1px solid #eed9d9;
-    }
+        .divider {
+            align-self: center;
+            border-bottom: 1px solid #eed9d9;
+        }
     </style>
 </head>
 
@@ -133,42 +131,41 @@ if (!isset($_SESSION['user'])) {
         while ($data = mysqli_fetch_array($query)) {
         ?>
 
-        <div class="ticket-container" style="margin-top: 20px">
-            <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
-            <div class="ticket-info">
-                <div class="field">
-                    <label>Id Pesan:</label>
-                    <span><?= $data['id'] ?></span>
+            <div class="ticket-container" style="margin-top: 20px">
+                <img src="../assets/camp.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
+                <div class="ticket-info">
+                    <div class="field">
+                        <label>Id Pesan:</label>
+                        <span><?= $data['id'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Camp Area:</label>
+                        <span><?= $data['camp_area'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Tanggal Masuk:</label>
+                        <span><?= $data['start_date'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Tanggal Keluar:</label>
+                        <span><?= $data['end_date'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Harga:</label>
+                        <span><?= $data['cost'] ?></span>
+                    </div>
                 </div>
-                <div class="field">
-                    <label>Camp Area:</label>
-                    <span><?= $data['camp_area'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Tanggal Masuk:</label>
-                    <span><?= $data['start_date'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Tanggal Keluar:</label>
-                    <span><?= $data['end_date'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Harga:</label>
-                    <span><?= $data['cost'] ?></span>
-                </div>
-            </div>
-            <?php
+                <?php
                 if ($data['status'] == "Paid") {
                 ?>
-            <button class="payment-button btn1">Selesai</button>
-            <?php
+                    <button class="payment-button btn1" style:"cursor: default">Selesai</button>
+                <?php
                 } else {
                 ?>
-            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
-            <?php
-                }
-                ?>
-        </div>
+                    <a href="Payment-method.php?value=camp&id=<?= $data['id'] ?>"><button class="payment-button btn1">Bayar</button></a> <?php
+                                                                                                                                        }
+                                                                                                                                            ?>
+            </div>
         <?php
         }
         ?>
@@ -182,39 +179,39 @@ if (!isset($_SESSION['user'])) {
         while ($data = mysqli_fetch_array($query)) {
         ?>
 
-        <div class="ticket-container">
-            <img src="../assets/trek.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 5px;" />
-            <div class="ticket-info">
+            <div class="ticket-container">
+                <img src="../assets/trek.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 5px;" />
+                <div class="ticket-info">
 
-                <div class="field">
-                    <label>Id Pesan:</label>
-                    <span><?= $data['id'] ?></span>
+                    <div class="field">
+                        <label>Id Pesan:</label>
+                        <span><?= $data['id'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Tanggal:</label>
+                        <span><?= $data['date'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Jumlah Orang:</label>
+                        <span><?= $data['people'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Harga:</label>
+                        <span><?= $data['cost'] ?></span>
+                    </div>
                 </div>
-                <div class="field">
-                    <label>Tanggal:</label>
-                    <span><?= $data['date'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Jumlah Orang:</label>
-                    <span><?= $data['people'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Harga:</label>
-                    <span><?= $data['cost'] ?></span>
-                </div>
-            </div>
-            <?php
+                <?php
                 if ($data['status'] == "Paid") {
                 ?>
-            <button class="payment-button btn1">Selesai</button>
-            <?php
+                    <button class="payment-button btn1">Selesai</button>
+                <?php
                 } else {
                 ?>
-            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
-            <?php
+                    <a href="Payment-method.php?value=trek&id=<?= $data['id'] ?>"><button class="payment-button btn1">Bayar</button></a>
+                <?php
                 }
                 ?>
-        </div>
+            </div>
         <?php
         }
         ?>
@@ -227,62 +224,109 @@ if (!isset($_SESSION['user'])) {
 
         while ($data = mysqli_fetch_array($query)) {
         ?>
-        <div class="ticket-container">
-            <img src="../assets/pendapa.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
-            <div class="ticket-info">
-                <div class="field">
-                    <label>Id Pesan:</label>
-                    <span><?= $data['id'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Tanggal:</label>
-                    <span><?= $data['tanggal'] ?></span>
-                </div>
-                <div class="field">
-                    <label>Jam :</label>
-                    <?php
+            <div class="ticket-container">
+                <img src="../assets/pendapa.jpg" alt="Foto Pemesanan" class="ticket-image" style="margin-top: 8px;" />
+                <div class="ticket-info">
+                    <div class="field">
+                        <label>Id Pesan:</label>
+                        <span><?= $data['id'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Tanggal:</label>
+                        <span><?= $data['tanggal'] ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Jam :</label>
+                        <?php
                         $startTime = date('H:i', strtotime($data['start_time']));
                         $endTime = date('H:i', strtotime($data['end_time']));
                         ?>
-                    <span><?= $startTime ?> - <?= $endTime ?></span>
+                        <span><?= $startTime ?> - <?= $endTime ?></span>
+                    </div>
+                    <div class="field">
+                        <label>Harga:</label>
+                        <span><?= $data['cost'] ?></span>
+                    </div>
                 </div>
-                <div class="field">
-                    <label>Harga:</label>
-                    <span><?= $data['cost'] ?></span>
-                </div>
-            </div>
-            <?php
+                <?php
                 if ($data['status'] == "Paid") {
                 ?>
-            <button class="payment-button btn1">Selesai</button>
-            <?php
+                    <button class="payment-button btn1" style:"cursor: default">Selesai</button>
+                <?php
                 } else {
                 ?>
-            <a href="php/updatepayment.php"><button class="payment-button btn1">Bayar</button></a>
-            <?php
+                    <a href="Payment-method.php?value=pendopo&id=<?= $data['id'] ?>"><button class="payment-button btn1">Bayar</button></a>
+
+                <?php
                 }
                 ?>
-        </div>
+            </div>
         <?php
         }
         ?>
+        <!-- Modal Pembayaran -->
+        <!-- Overlay -->
+        <div id="overlay" class="overlay-modal" onclick="closeModal()"></div>
+
+        <!-- Modal Pembayaran -->
+        <div id="modal-pembayaran" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Pilih Metode Pembayaran</h3>
+            <div class="form-check">
+                <label class="form-check-label" for="metode1">
+                    <img src="../assets/dana.png" alt="Gambar Metode Pembayaran 1" class="metode-gambar">
+                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode1" value="dana" checked>
+                    Dana
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="metode2">
+                    <img src="../assets/spay.jpg" alt="Gambar Metode Pembayaran 2" class="metode-gambar">
+                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode2" value="spay">
+                    Shopee Pay
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="metode2">
+                    <img src="../assets/gopay.png" alt="Gambar Metode Pembayaran 2" class="metode-gambar">
+                    <input class="form-check-input" type="radio" name="metode_pembayaran" id="metode2" value="gopay">
+                    Gopay
+                </label>
+            </div>
+            <!-- Tambahkan pilihan metode pembayaran lainnya jika diperlukan -->
+            <button class="btn btn-primary" onclick="inputnomor()">Bayar</button>
+        </div>
+
+        <div id="modal-nomor-hp" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h4>Input Nomor HP</h4>
+            <form>
+                <div class="form-group">
+                    <label for="nomor-hp">Nomor HP:</label>
+                    <input type="text" id="nomor-hp" class="form-control">
+                </div>
+                <button type="button" class="btn btn-primary" onclick="prosesPembayaran()">Proses
+                    Pembayaran</button>
+            </form>
+        </div>
+
     </div>
 
     <div id="footer-placeholder"></div>
+
     <script src="https://kit.fontawesome.com/a20a32b1ba.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-    $(function() {
-        $("#navbar-placeholder").load("component/Navbar.php");
-    });
+        $(function() {
+            $("#navbar-placeholder").load("component/Navbar.php");
+        });
     </script>
     <script>
-    $(function() {
-        $("#footer-placeholder").load("component/Footer.html");
-    });
+        $(function() {
+            $("#footer-placeholder").load("component/Footer.html");
+        });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
     </script>
 </body>
 

@@ -2,8 +2,8 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-  header('Location: LoginPage.php?login_required=1');
-  exit();
+    header('Location: LoginPage.php?login_required=1');
+    exit();
 }
 ?>
 
@@ -123,14 +123,10 @@ if (!isset($_SESSION['user'])) {
         <h1>Kontak Kami</h1>
         <hr />
         <div class="container">
-            <form id="contact-form">
+            <form id="contact-form" action="php/cf_proses.php" method="post">
                 <div class="form-group" style="margin-top: 30px">
                     <label for="name">Nama:</label>
                     <input type="text" id="name" name="name" required />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" required />
                 </div>
                 <div class="form-group">
                     <label for="message">Pesan:</label>
@@ -147,20 +143,39 @@ if (!isset($_SESSION['user'])) {
         <h1>Contact Response</h1>
         <hr />
         <div class="question-list">
+
+            <?php
+            // SELECT a.id, a.id_question, a.id_admin, a.answer, a.time, q.nama, q.question, q.time FROM `answer` as a INNER JOIN question as q on q.id = a.id_question;
+            include 'php/connector.php';
+            $sqlquestion = "SELECT * FROM question";
+            $query = mysqli_query($connect, $sqlquestion) or die(mysqli_error($connect));
+            while ($data = mysqli_fetch_array($query)) {
+            ?>
             <div class="question">
                 <div class="data-group">
-                    <p>Username</p>
-                    <p style="justify-self: end;">Tanggal</p>
+                    <p><?= $data['nama'] ?></p>
+                    <p style="justify-self: end;"><?= $data['time'] ?></p>
                 </div>
                 <div class="question-heading">
-                    <p>Pertanyaan: Apa kebijakan pengembalian barang?</p>
+                    <p>Pertanyaan: <?= $data['question'] ?></p>
                     <div class="icon"><i class="fa-solid fa-caret-down"></i></div>
                 </div>
+                <?php
+                    $id_question = $data['id'];
+                    $sqlanswer = "SELECT * FROM answer WHERE id_question = '$id_question'";
+                    $queryanswer = mysqli_query($connect, $sqlanswer) or die(mysqli_error($connect));
+                    while ($answer = mysqli_fetch_array($queryanswer)) {
+                    ?>
                 <div class="answer">
-                    <p>Jawaban: Kebijakan pengembalian barang kami adalah...</p>
+                    <p>Jawaban: <?= $answer['answer'] ?></p>
                 </div>
+                <?php
+                    }
+                    ?>
             </div>
-
+            <?php
+            }
+            ?>
             <div class="question">
                 <div class="data-group">
                     <p>Username</p>
