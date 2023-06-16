@@ -138,7 +138,7 @@ if (isset($_GET['message'])) {
       <div class="form-group">
         <button type="submit">Daftar</button>
       </div>
-      <h6>Sudah punya akun? <a href="LoginPage.html">Login</a></h6>
+      <h6>Sudah punya akun? <a href="LoginPage.php">Login</a></h6>
     </form>
   </div>
 </body>
